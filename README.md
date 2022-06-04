@@ -4,7 +4,7 @@ A single script to build a minimal live Linux operating system from source code 
 ```bash
 ./DoomLinux.sh
 ```
-This command will create a bootable iso of DoomLinux which is bootable from USB stick.
+This command will create an iso of DoomLinux which is bootable from USB stick.
 
 ## What it does
 - Downloads Linux Kernel 5.4.3 source and compiles it with a minimal configuration
