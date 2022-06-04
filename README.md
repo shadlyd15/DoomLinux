@@ -234,7 +234,7 @@ grub-mkrescue --compress=xz -o DoomLinux.iso iso
 - [Minimal linux script](https://github.com/ivandavidov/minimal-linux-script)
 
 ## Disclaimer
-This project is made just for those who wants to learn how basic linux systems works. So under no circumstances shall the author be liable for any damage.
+This project is made just for those who wants to learn how basic linux systems works. Under no circumstances shall the author be liable for any damage.
 
 ## Licence 
 Licensed under the MIT License.
