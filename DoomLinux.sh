@@ -41,7 +41,7 @@ cp fbdoom $ROOTFS/bin/fbdoom
 cp $STAGING/doom1.wad $ROOTFS/bin/doom1.wad
 
 cd $ROOTFS
-mkdir -p dev proc sys mnt tmp
+mkdir -p bin dev mnt proc sys tmp
 
 echo '#!/bin/sh' > init
 echo 'dmesg -n 1' >> init
