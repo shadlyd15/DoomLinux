@@ -5,7 +5,6 @@ A single script to build a minimal live Linux operating system from source code 
 ./DoomLinux.sh
 ```
 This command will create an iso of DoomLinux which is bootable from USB stick.
-This project is made just as a reference point for those who wants to learn how basic linux systems works.
 
 ## What it does
 - Downloads Linux Kernel 5.4.3 source and compiles it with a minimal configuration
@@ -230,8 +229,12 @@ cd $SOURCE_DIR
 grub-mkrescue --compress=xz -o DoomLinux.iso iso
 ```
 
-
-
 ## Acknowledgements
 - [Write your own Operating System](https://www.youtube.com/watch?v=asnXWOUKhTA)
 - [Minimal linux script](https://github.com/ivandavidov/minimal-linux-script)
+
+## Disclaimer
+This project is made just for those who wants to learn how basic linux systems works. So under no circumstances shall the author be liable for any damage.
+
+## Licence 
+Licensed under the MIT License.
