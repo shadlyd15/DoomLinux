@@ -63,6 +63,7 @@ sed -i "s|.*CONFIG_NET=y.*|# CONFIG_NET is not set|" .config
 sed -i "s|.*CONFIG_SOUND=y.*|# CONFIG_SOUND is not set|" .config
 sed -i "s|.*CONFIG_EFI=y.*|# CONFIG_EFI is not set|" .config
 sed -i "s|.*CONFIG_EFI_STUB=y.*|# CONFIG_EFI_STUB is not set|" .config
+sed -i "s/^CONFIG_DEBUG_KERNEL.*/\\# CONFIG_DEBUG_KERNEL is not set/" .config
 sed -i "s|.*# CONFIG_KERNEL_XZ is not set.*|CONFIG_KERNEL_XZ=y|" .config
 sed -i "s|.*CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE=y.*|# CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE is not set|" .config
 sed -i "s|.*# CONFIG_CC_OPTIMIZE_FOR_SIZE is not set.*|CONFIG_CC_OPTIMIZE_FOR_SIZE=y|" .config
