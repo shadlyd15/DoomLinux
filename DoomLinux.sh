@@ -18,15 +18,15 @@ wget -nc -O busybox.tar.bz2 http://busybox.net/downloads/busybox-${BUSYBOX_VERSI
 wget -nc -O fbDOOM-master.zip https://github.com/maximevince/fbDOOM/archive/refs/heads/master.zip
 wget -nc -O doom1.wad https://distro.ibiblio.org/slitaz/sources/packages/d/doom1.wad
 
-tar -xvf --skip-old-files kernel.tar.xz
-tar -xvf --skip-old-files busybox.tar.bz2
-unzip -n --skip-old-files fbDOOM-master.zip
+tar -xvf kernel.tar.xz
+tar -xvf busybox.tar.bz2
+unzip fbDOOM-master.zip
 
 set -ex
 cd busybox-${BUSYBOX_VERSION}
 make defconfig
 sed -i "s|.*CONFIG_STATIC.*|CONFIG_STATIC=y|" .config
-make -j$(nproc) busybox install
+make busybox install -j$(nproc)
 cd _install
 cp -r ./ $ROOTFS/
 cd $ROOTFS
@@ -49,6 +49,7 @@ echo 'mount -t devtmpfs none /dev' >> init
 echo 'mount -t proc none /proc' >> init
 echo 'mount -t sysfs none /sys' >> init
 echo 'fbdoom -iwad /bin/doom1.wad' >> init
+echo 'clear' >> init
 echo 'setsid cttyhack /bin/sh' >> init
 
 chmod +x init
@@ -70,9 +71,11 @@ sed -i "s|.*# CONFIG_CC_OPTIMIZE_FOR_SIZE is not set.*|CONFIG_CC_OPTIMIZE_FOR_SI
 sed -i "s|.*CONFIG_KERNEL_GZIP=y.*|# CONFIG_KERNEL_GZIP is not set|" .config
 sed -i "s|.*CONFIG_DEFAULT_HOSTNAME=*|CONFIG_DEFAULT_HOSTNAME=\"DoomLinux\"|" .config
 
-make -j$(nproc) bzImage
+make bzImage -j$(nproc)
 cp arch/x86/boot/bzImage $SOURCE_DIR/iso/boot/bzImage
 cp System.map $SOURCE_DIR/iso/boot/System.map
+
+make INSTALL_HDR_PATH=$ROOTFS headers_install -j$(nproc)
 
 cd $SOURCE_DIR/iso/boot
 mkdir -p grub
