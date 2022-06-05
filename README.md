@@ -235,6 +235,9 @@ grub-mkrescue --compress=xz -o DoomLinux.iso iso
 - [Minimal linux script](https://github.com/ivandavidov/minimal-linux-script)
 - [FBDoom](https://github.com/maximevince/fbDOOM)
 
+## DooLinux in Action
+[![DoomLinux](https://img.youtube.com/vi/VaALEKWQOpg/0.jpg)](https://www.youtube.com/watch?v=VaALEKWQOpg)
+
 ## Disclaimer
 This project is made just for those who wants to learn how basic linux systems works. Under no circumstances shall the author be liable for any damage.
 
