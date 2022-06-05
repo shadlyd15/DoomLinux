@@ -228,6 +228,7 @@ Finally create DoomLinux bootable iso
 cd $SOURCE_DIR
 grub-mkrescue --compress=xz -o DoomLinux.iso iso
 ```
+**You can now write the iso in your USB stick and play Doom.**
 
 ## Acknowledgements
 - [Write your own Operating System](https://www.youtube.com/watch?v=asnXWOUKhTA)
