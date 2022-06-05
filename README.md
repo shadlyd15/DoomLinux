@@ -232,6 +232,7 @@ grub-mkrescue --compress=xz -o DoomLinux.iso iso
 ## Acknowledgements
 - [Write your own Operating System](https://www.youtube.com/watch?v=asnXWOUKhTA)
 - [Minimal linux script](https://github.com/ivandavidov/minimal-linux-script)
+- [FBDoom](https://github.com/maximevince/fbDOOM)
 
 ## Disclaimer
 This project is made just for those who wants to learn how basic linux systems works. Under no circumstances shall the author be liable for any damage.
