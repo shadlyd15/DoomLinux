@@ -229,6 +229,9 @@ cd $SOURCE_DIR
 grub-mkrescue --compress=xz -o DoomLinux.iso iso
 ```
 **You can now write the iso in your USB stick and play Doom.**
+## Compiled size
+The final iso should be around 20 MB in size depending on the architecture. 
+For my x86_64 CPU the compiled kernel size is 4.1 MB and the iso is 17.9 MB.
 
 ## Acknowledgements
 - [Write your own Operating System](https://www.youtube.com/watch?v=asnXWOUKhTA)
