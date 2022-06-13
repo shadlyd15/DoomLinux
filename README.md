@@ -16,7 +16,7 @@ This command will create an iso of DoomLinux which is bootable from USB stick.
 
 ## Build Dependencies
 ```bash 
-sudo apt install wget make gawk gcc bc bison flex xorriso libelf-dev libssl-dev grub-common
+sudo apt install wget make gawk gcc bc bison flex unzip rsync mtools xorriso libelf-dev libssl-dev grub-common
 ```
 ## Explanation
 ### Creating folders and downloading the source codes 
@@ -144,7 +144,6 @@ cd $ROOTFS
 rm -f linuxrc
 ```
 These commands will statically compile busybox. The default installation folder for busybox is _install. We will copy the compiled binaries from there to our rootfs. 
-
 ### Compile FBDoom statically
 ```bash
 cd $STAGING
@@ -155,7 +154,6 @@ cp fbdoom $ROOTFS/bin/fbdoom
 cp $STAGING/doom1.wad $ROOTFS/bin/doom1.wad
 ```
 We need to statically compile FBDoom to work it in our system with minimal dependencies. The above commands will do that for us and it will also copy the doom1.wad in our root folder.
-
 ### Archive rootfs
 We will create additional folders so that Linux kernel can use them on runtime.
 ```bash
@@ -232,7 +230,6 @@ grub-mkrescue --compress=xz -o DoomLinux.iso iso
 ## Compiled size
 The final iso should be around 20 MB in size depending on the architecture. 
 For my x86_64 CPU the compiled kernel size is 4.1 MB and the iso is 17.9 MB.
-
 ## Acknowledgements
 - [Write your own Operating System](https://www.youtube.com/watch?v=asnXWOUKhTA)
 - [Minimal linux script](https://github.com/ivandavidov/minimal-linux-script)
