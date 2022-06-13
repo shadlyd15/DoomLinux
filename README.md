@@ -149,6 +149,7 @@ These commands will statically compile busybox. The default installation folder 
 cd $STAGING
 cd fbDOOM-master/fbdoom
 sed -i "s|CFLAGS+=-ggdb3 -Os|CFLAGS+=-ggdb3 -Os -static|" Makefile
+sed -i "s|NOSDL|SDL|" Makefile
 make -j$(nproc)
 cp fbdoom $ROOTFS/bin/fbdoom
 cp $STAGING/doom1.wad $ROOTFS/bin/doom1.wad
