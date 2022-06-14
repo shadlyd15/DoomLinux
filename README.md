@@ -123,7 +123,10 @@ Change host name
 ```bash
 sed -i "s|.*CONFIG_DEFAULT_HOSTNAME=*|CONFIG_DEFAULT_HOSTNAME=\"DoomLinux\"|" .config
 ```
-
+Enable Bochs dispi vga interface for QEMU
+```bash
+sed -i "s|.*# CONFIG_DRM_BOCHS is not set*|CONFIG_DRM_BOCHS=y|" .config
+```
 
 Now compile the kernel and copy the binaries.
 ```bash
@@ -234,6 +237,15 @@ For my x86_64 CPU the compiled kernel size is 4.1 MB and the iso is 17.9 MB.
 - [Write your own Operating System](https://www.youtube.com/watch?v=asnXWOUKhTA)
 - [Minimal linux script](https://github.com/ivandavidov/minimal-linux-script)
 - [FBDoom](https://github.com/maximevince/fbDOOM)
+
+## Run
+### Real Hardware
+Write the iso image on USB stick and boot it from BIOS menu.
+### QEMU
+To run on QEMU :
+```bash
+qemu-system-x86_64 DoomLinux.iso
+```
 
 ## DoomLinux in Action
 [![DoomLinux](https://img.youtube.com/vi/VaALEKWQOpg/0.jpg)](https://www.youtube.com/watch?v=VaALEKWQOpg)
