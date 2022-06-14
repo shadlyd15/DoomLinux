@@ -13,6 +13,7 @@ ISO_DIR=$SOURCE_DIR/iso
 
 cd $STAGING
 
+set -ex
 wget -nc -O kernel.tar.xz http://kernel.org/pub/linux/kernel/v5.x/linux-${KERNEL_VERSION}.tar.xz
 wget -nc -O busybox.tar.bz2 http://busybox.net/downloads/busybox-${BUSYBOX_VERSION}.tar.bz2
 wget -nc -O fbDOOM-master.zip https://github.com/maximevince/fbDOOM/archive/refs/heads/master.zip
@@ -22,11 +23,9 @@ tar -xvf kernel.tar.xz
 tar -xvf busybox.tar.bz2
 unzip fbDOOM-master.zip
 
-set -ex
 cd busybox-${BUSYBOX_VERSION}
 make defconfig
-sed -i "s|.*CONFIG_STATIC.*|CONFIG_STATIC=y|" .config
-make busybox install -j$(nproc)
+LDFLAGS="--static" make busybox install -j$(nproc)
 cd _install
 cp -r ./ $ROOTFS/
 cd $ROOTFS
@@ -35,7 +34,7 @@ rm -f linuxrc
 cd $STAGING
 cd fbDOOM-master/fbdoom
 sed -i "s|CFLAGS+=-ggdb3 -Os|CFLAGS+=-ggdb3 -Os -static|" Makefile
-sed -i "s|NOSDL|SDL|" Makefile
+sed -i "s|ifneq (\$(NOSDL),1)|ifeq (\$(LINK_SDL),1)|" Makefile
 make -j$(nproc)
 cp fbdoom $ROOTFS/bin/fbdoom
 

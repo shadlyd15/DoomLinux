@@ -136,8 +136,7 @@ cp System.map $SOURCE_DIR/iso/boot/System.map
 cd  $STAGING
 cd busybox-${BUSYBOX_VERSION}
 make defconfig
-sed -i "s|.*CONFIG_STATIC.*|CONFIG_STATIC=y|" .config
-make -j$(nproc) busybox install
+LDFLAGS="--static" make busybox install -j$(nproc)
 cd _install
 cp -r ./ $ROOTFS/
 cd $ROOTFS
