@@ -10,8 +10,12 @@ SOURCE_DIR=$PWD
 ROOTFS=$SOURCE_DIR/rootfs
 STAGING=$SOURCE_DIR/staging
 ISO_DIR=$SOURCE_DIR/iso
+STAGING=$SOURCE_DIR/staging
 
-cd $STAGING
+cd $_
+
+export numcpus=$(nproc)
+export numcpusplusone=$(( NUMCPUS + 1 ))
 
 set -ex
 wget -nc -O kernel.tar.xz http://kernel.org/pub/linux/kernel/v5.x/linux-${KERNEL_VERSION}.tar.xz
@@ -25,7 +29,7 @@ unzip fbDOOM-master.zip
 
 cd busybox-${BUSYBOX_VERSION}
 make defconfig
-LDFLAGS="--static" make busybox install -j$(nproc)
+LDFLAGS="--static" make busybox install -j$(numcpusplusone)
 cd _install
 cp -r ./ $ROOTFS/
 cd $ROOTFS
@@ -59,7 +63,7 @@ find . | cpio -R root:root -H newc -o | gzip > $SOURCE_DIR/iso/boot/rootfs.gz
 
 cd $STAGING
 cd linux-${KERNEL_VERSION}
-make -j$(nproc) defconfig
+make -j$(numcpusplusone) defconfig
 sed -i "s|.*CONFIG_NET=y.*|# CONFIG_NET is not set|" .config
 sed -i "s|.*CONFIG_SOUND=y.*|# CONFIG_SOUND is not set|" .config
 sed -i "s|.*CONFIG_EFI=y.*|# CONFIG_EFI is not set|" .config
@@ -72,15 +76,15 @@ sed -i "s|.*CONFIG_KERNEL_GZIP=y.*|# CONFIG_KERNEL_GZIP is not set|" .config
 sed -i "s|.*CONFIG_DEFAULT_HOSTNAME=*|CONFIG_DEFAULT_HOSTNAME=\"DoomLinux\"|" .config
 sed -i "s|.*# CONFIG_DRM_BOCHS is not set*|CONFIG_DRM_BOCHS=y|" .config
 
-make bzImage -j$(nproc)
+make bzImage -j$(numcpusplusone)
 cp arch/x86/boot/bzImage $SOURCE_DIR/iso/boot/bzImage
 cp System.map $SOURCE_DIR/iso/boot/System.map
 
-make INSTALL_HDR_PATH=$ROOTFS headers_install -j$(nproc)
+make INSTALL_HDR_PATH=$ROOTFS headers_install -j$(numcpusplusone)
 
 cd $SOURCE_DIR/iso/boot
 mkdir -p grub
-cd grub
+cd $_
 cat > grub.cfg << EOF
 set default=0
 set timeout=30
