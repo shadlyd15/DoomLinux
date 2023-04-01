@@ -10,7 +10,7 @@ This command will create an iso of DoomLinux which is bootable from USB stick.
 - Downloads Linux Kernel 5.4.3 source and compiles it with a minimal configuration
 - Downloads Busybox 1.35.0 source and compiles it statically.
 - Downloads FBDoom and compiles it statically.
-- Creates rootfs for linux kernel.
+- Creates rootfs for Linux kernel.
 - Generates grub configuration
 - Creates a bootable live Linux iso that runs Doom on boot.
 
@@ -214,14 +214,14 @@ set menu_color_highlight=white/green
 root (hd0,0)
 
 menuentry "DoomLinux" {      
-  linux  /boot/bzImage
+  Linux  /boot/bzImage
   initrd /boot/rootfs.gz
 }
 EOF
 ```
 These are the location of our compiled kernel and archived rootfs.
 ```
-  linux  /boot/bzImage
+  Linux  /boot/bzImage
   initrd /boot/rootfs.gz
 ```
 Finally create DoomLinux bootable iso
@@ -235,7 +235,7 @@ The final iso should be around 20 MB in size depending on the architecture.
 For my x86_64 CPU the compiled kernel size is 4.1 MB and the iso is 17.9 MB.
 ## Acknowledgements
 - [Write your own Operating System](https://www.youtube.com/watch?v=asnXWOUKhTA)
-- [Minimal linux script](https://github.com/ivandavidov/minimal-linux-script)
+- [Minimal Linux script](https://github.com/ivandavidov/minimal-linux-script)
 - [FBDoom](https://github.com/maximevince/fbDOOM)
 
 ## Run
@@ -251,7 +251,7 @@ qemu-system-x86_64 DoomLinux.iso
 [![DoomLinux](https://img.youtube.com/vi/VaALEKWQOpg/0.jpg)](https://www.youtube.com/watch?v=VaALEKWQOpg)
 
 ## Disclaimer
-This project is made just for those who wants to learn how basic linux systems works. Under no circumstances shall the author be liable for any damage.
+This project is made just for those who wants to learn how basic Linux systems works. Under no circumstances shall the author be liable for any damage.
 
 ## Licence 
 Licensed under the MIT License.
