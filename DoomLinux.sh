@@ -1,6 +1,6 @@
 #!/bin/sh
-KERNEL_VERSION=5.4.3
-BUSYBOX_VERSION=1.35.0
+KERNEL_VERSION=6.7.8
+BUSYBOX_VERSION=1.36.1
 
 mkdir -p rootfs
 mkdir -p staging
@@ -14,7 +14,7 @@ ISO_DIR=$SOURCE_DIR/iso
 cd $STAGING
 
 set -ex
-wget -nc -O kernel.tar.xz http://kernel.org/pub/linux/kernel/v5.x/linux-${KERNEL_VERSION}.tar.xz
+wget -nc -O kernel.tar.xz http://kernel.org/pub/linux/kernel/v6.x/linux-${KERNEL_VERSION}.tar.xz
 wget -nc -O busybox.tar.bz2 http://busybox.net/downloads/busybox-${BUSYBOX_VERSION}.tar.bz2
 wget -nc -O fbDOOM-master.zip https://github.com/maximevince/fbDOOM/archive/refs/heads/master.zip
 wget -nc -O doom1.wad https://distro.ibiblio.org/slitaz/sources/packages/d/doom1.wad
